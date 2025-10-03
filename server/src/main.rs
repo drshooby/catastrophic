@@ -1,5 +1,4 @@
 mod handlers;
-mod responses;
 
 use actix_web::{App, HttpServer, web};
 use std::env;
@@ -14,8 +13,12 @@ async fn main() -> std::io::Result<()> {
 
   println!("Starting server on {}", bind_addr);
 
-  HttpServer::new(|| App::new().route("/hello", web::get().to(handlers::hello)))
-    .bind(&bind_addr)?
-    .run()
-    .await
+  HttpServer::new(|| {
+    App::new()
+      .route("/hello", web::get().to(handlers::hello))
+      .route("/cat", web::get().to(handlers::get_cat))
+  })
+  .bind(&bind_addr)?
+  .run()
+  .await
 }
