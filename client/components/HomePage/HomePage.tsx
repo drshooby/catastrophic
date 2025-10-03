@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./HomePage.module.css";
 import { fetchHello, fetchCat } from "@/functions/fetcher";
@@ -10,6 +10,20 @@ export function HomePage() {
   const [catUrl, setCatUrl] = useState<string>("");
   const [isLoadingMessage, setIsLoadingMessage] = useState<boolean>(false);
   const [isLoadingCat, setIsLoadingCat] = useState<boolean>(false);
+  const [lastRequestTime, setLastRequestTime] = useState<number>(0);
+  const [isBlocked, setIsBlocked] = useState<boolean>(true);
+
+  // essentially simple rate-limiting for cat pictures from the public api
+  const MIN_REQUEST_INTERVAL = 2000; // 2 seconds
+
+  // Unblock button on mount after initial delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBlocked(false);
+    }, MIN_REQUEST_INTERVAL);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   async function getMessage() {
     setIsLoadingMessage(true);
@@ -27,9 +41,18 @@ export function HomePage() {
   }
 
   async function getCat() {
+    const now = Date.now();
+
+    if (isBlocked || now - lastRequestTime < MIN_REQUEST_INTERVAL) {
+      setMessage("Please wait a moment before requesting again");
+      return;
+    }
+
     setIsLoadingCat(true);
+    setIsBlocked(true);
     setMessage("");
     setCatUrl("");
+    setLastRequestTime(now);
 
     const { url, error } = await fetchCat();
 
@@ -40,6 +63,11 @@ export function HomePage() {
     }
 
     setIsLoadingCat(false);
+
+    // Unblock after interval
+    setTimeout(() => {
+      setIsBlocked(false);
+    }, MIN_REQUEST_INTERVAL);
   }
 
   return (
@@ -61,10 +89,10 @@ export function HomePage() {
 
           <button
             onClick={getCat}
-            disabled={isLoadingCat}
+            disabled={isLoadingCat || isBlocked}
             className={styles.buttonPrimary}
           >
-            {isLoadingCat ? "Fetching..." : "Get Cat"}
+            {isLoadingCat ? "Fetching..." : isBlocked ? "Wait..." : "Get Cat"}
           </button>
         </div>
 
