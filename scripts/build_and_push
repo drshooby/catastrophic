@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Usage: ./build_and_push DIR_PATH AWS_ACCOUNT_ID [REGION] [TAG]
+set -euo pipefail
+
+DIR="$1"
+ACCOUNT="$2"
+REGION="${3:-us-east-1}"
+TAG="${4:-latest}
+
+SERVICE_NAME="$(basename "$DIR")"
+REPO="$ACCOUNT.dkr.ecr.$REGION.amazonaws.com/$SERVICE_NAME"
+
+echo "Building $SERVICE_NAME from $DIR"
+docker buildx build --platform linux/amd64 -t "$REPO:$TAG" "$DIR"
+
+echo "Pushing $REPO:$TAG"
+docker push "$REPO:$TAG"
+
+echo "Push complete."
