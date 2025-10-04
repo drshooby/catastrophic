@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Usage: ./build_and_push DIR_PATH AWS_ACCOUNT_ID [REGION] [TAG]
 set -euo pipefail
 
@@ -9,6 +9,17 @@ TAG="${4:-latest}"
 
 SERVICE_NAME="$(basename "$DIR")"
 REPO="$ACCOUNT.dkr.ecr.$REGION.amazonaws.com/$SERVICE_NAME"
+
+if ! aws ecr describe-repositories --repository-names "$SERVICE_NAME" --region "$REGION" >/dev/null 2>&1; then
+  echo "Repository with service name: $SERVICE_NAME not found. Creating..."
+  aws ecr create-repository \
+      --repository-name "$SERVICE_NAME" \
+      --region "$REGION" \
+      --image-tag-mutability IMMUTABLE_WITH_EXCLUSION \
+      --image-tag-mutability-exclusion-filters filterType=WILDCARD,filter="latest"
+else
+  echo "Repository found."
+fi
 
 echo "Building $SERVICE_NAME from $DIR"
 docker buildx build --platform linux/amd64 -t "$REPO:$TAG" "$DIR"
