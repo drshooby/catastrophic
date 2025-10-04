@@ -1,6 +1,6 @@
 # catastrophic
-A demo application to showcase secure, highly-available EC2 deployments on AWS.  
-> This project was created as part of my Cloud Computing midterm.
+A demo application to showcase secure, highly-available EC2 deployments on AWS  
+> This project was created as part of my Cloud Computing midterm  
 
 ## Architecture Diagram
 <img width="1249" height="614" alt="SCR-20251003-rtxk" src="https://github.com/user-attachments/assets/32986f15-d900-4338-a457-5bb2695b6f8a" />
