@@ -5,7 +5,7 @@ set -euo pipefail
 DIR="$1"
 ACCOUNT="$2"
 REGION="${3:-us-east-1}"
-TAG="${4:-latest}
+TAG="${4:-latest}"
 
 SERVICE_NAME="$(basename "$DIR")"
 REPO="$ACCOUNT.dkr.ecr.$REGION.amazonaws.com/$SERVICE_NAME"
