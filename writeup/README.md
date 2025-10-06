@@ -1,6 +1,6 @@
-# Securely Deploying a Web Application on AWS EC2 (Automated)
+# Securely Deploying a Highly Availability (HA) Web Application on AWS EC2 (Automated)
 
-> A step-by-step guide to manually deploying a secure, high-availability web app on AWS EC2 — without ECS, Elastic Beanstalk, or other automated deployment services.
+> A step-by-step guide to manually deploying a secure, high-availability web app on AWS EC2 — without ECS, Elastic Beanstalk, or other deployment services.
 
 ## Introduction
 
@@ -17,7 +17,7 @@ The primary objectives of this project are as follows:
 1. Automate Deployment: Develop a repeatable and efficient process for deploying a web application using AWS EC2 instances.
 2. Implement Secure Infrastructure: Configure network isolation, IAM roles, and access controls in alignment with AWS security best practices.
 3. Demonstrate Core AWS Concepts: Utilize foundational AWS services such as EC2, VPC, Security Groups, and IAM to build a secure and controlled deployment environment.
-4. Ensure High Availability (HA): Design the deployment to maintain uptime and resilience through multi-AZ configurations and load balancing.
+4. Ensure HA: Design the deployment to maintain uptime and resilience through multi-AZ configurations and load balancing.
 5. Deliver Clear Documentation: Provide a concise, well-structured report that includes architecture diagrams and explanations of configuration and security choices.
 
 ## Architecture Overview
