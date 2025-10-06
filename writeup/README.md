@@ -1,4 +1,4 @@
-# Securely Deploying a Highly Availability (HA) Web Application on AWS EC2 (Automated)
+# Securely Deploying a High Availability (HA) Web Application on AWS EC2 (Automated)
 
 > A step-by-step guide to manually deploying a secure, high-availability web app on AWS EC2 — without ECS, Elastic Beanstalk, or other deployment services.
 
