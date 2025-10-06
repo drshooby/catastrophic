@@ -3,7 +3,7 @@ A demo application to showcase secure, highly-available EC2 deployments on AWS
 > This project was created as part of my Cloud Computing midterm  
 
 ## Architecture Diagram
-<img width="1249" height="614" alt="SCR-20251003-rtxk" src="https://github.com/user-attachments/assets/32986f15-d900-4338-a457-5bb2695b6f8a" />
+<img width="1249" height="614" alt="SCR-20251003-rtxk" src="diagram.png" />
 
 ## App
 <img width="668" height="311" alt="image" src="https://github.com/user-attachments/assets/5be8d939-cd7f-4af7-a721-c706881fbf8d" />
