@@ -200,6 +200,7 @@ The script, located at `infra/scripts/user_data`, performs the following critica
 
 - **Client:** Next/React/TypeScript
 - **Server:** Rust (actix-web)
+- **Reverse Proxy:** NGINX
 
 ### **APIs**
 
