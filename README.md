@@ -122,7 +122,7 @@ For registrars, I use Namecheap, so I update the custom DNS with the nameservers
 The values for the nameserver update will be under the NS record:  
 <img alt="Route 53 hosted zone section" style="width: 100%; max-width: 600px; height: auto; max-height: 700px;" src="images/route53.png">
 
-Lastly, Terraform will handle adding an additional record for the ALB once it's created so the app can be reached via a nice url.
+Lastly, Terraform will automatically create the required DNS records for ACM validation and the ALB after deployment, enabling the application to be accessed through a properly configured and secured domain.
 
 ## **Network and Security Deep Dive**
 
