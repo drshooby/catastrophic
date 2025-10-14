@@ -213,7 +213,9 @@ Endpoint `/hello`:
 <img alt="Screenshot of catastrophic /hello call" style="width: 100%; max-width: 600px; height: auto;" src="images/talk to cat.png">
 
 Endpoint `/cat`:
-<img alt="Screenshot of catastrophic /cat call" style="width: 100%; max-width: 600px; height: auto; max-height: 450px;" src="images/get cat.jpeg">
+<img alt="Screenshot of catastrophic /cat call" style="width: 100%; max-width: 600px; height: auto; max-height: 450px;" src="images/secure cat.jpeg">
+
+As you can see the site is secure via the ALB listener working with ACM.
 
 ## **Conclusion**
 
