@@ -123,6 +123,7 @@ The values for the nameserver update will be under the NS record:
 <img alt="Route 53 hosted zone section" style="width: 100%; max-width: 600px; height: auto; max-height: 700px;" src="images/route53.png">
 
 Lastly, Terraform will automatically create the required DNS records for ACM validation and the ALB after deployment, enabling the application to be accessed through a properly configured and secured domain.
+<img alt="Route 53 alb and acm" style="width: 100%; max-width: 600px; height: auto; max-height: 700px;" src="images/route53 alb.png">
 
 ## **Network and Security Deep Dive**
 
